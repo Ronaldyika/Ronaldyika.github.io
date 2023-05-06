@@ -1,0 +1,54 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+{% include 'accounts/status.html' %}
+<br>
+<style>
+    #table th,td{
+        border: 1px solid black;
+
+    }
+</style>
+<div class="row">
+    <div class="col-md-5">
+        <h5>CUSTOMERS:</h5><hr>
+        <div class="card card-body">
+            <a href=" " class="btn btn-primary btn-sm btn-block">Create Customer</a>
+            <table class="table table-sm" id="table">
+                <tr>
+                    <th>Customer</th>
+                    <th>Orders</th>
+                </tr>
+                {% for detail in details %}
+                <tr>
+                    <td>{{ detail.customer.name }}</td>
+                    <td>{{ detail.product.name }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h5>Last 2 Orders</h5><hr>
+        <div class="card card-body">
+            <a href="" class="btn btn-primary btn-sm btn-block">Create Order</a>
+            <table class="table table-sm" id="table" >
+                <tr>
+                    <th>products</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                </tr>
+                {% for detail in details %}
+                <tr>
+                    
+                    <th>{{ detail.product }}</th>
+                    <th>{{ detail.date_created }}</th>
+                    <th>{{ detail.status }}</th>
+    
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

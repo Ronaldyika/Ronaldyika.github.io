@@ -1,0 +1,73 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col">
+        <div class="col-md">
+            <div class="card">
+                <h5>Customer:</h5><hr>
+                <div class="card-body">
+                    <div class="btn btn-block btn-primary">Update Customer</div>
+                    <div class="btn btn-block btn-secondary">Delete Customer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="col-md">
+            <div class="card">
+                <h5>Contact info:</h5><hr>
+                {% for info in det %}
+                <div class="card-body">
+                    <div class="form form-group">
+                        <label for="email">Email:{{ info.email }}</label><br>
+                        <label for="phone">Phone:{{ info.phone }}</label>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center">
+                <h5>Total Orders:</h5><hr>
+                <h2>{{ order_count }}</h2>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card bg-white mt-5">
+    <div class="card-body">
+        <div class="btn btn-primary">search</div>
+    </div>
+</div>
+<div class="row">
+        <div class="card-body" id="mylist">
+            <table class="table">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Removes</th>
+                </tr>
+                {% for field in all %}
+                <tr>
+                    <td>{{ field.product.name }}</td>
+                    <td>{{ field.product.category }}</td>
+                    <td>{{ field.date_created }}</td>
+                    <td>{{ field.status }}</td>
+                    <td><a href="" class="btn btn-button btn-primary">Update</a></td>
+                    <td><a href="" class="btn btn-button btn-danger">Remove</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+</div><hr>
+
+{% endblock %}
